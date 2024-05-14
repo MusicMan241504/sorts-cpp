@@ -103,11 +103,13 @@ void insertionSort2(T &arr) {
 	for (size_t i{1}; i < len; ++i) { // start at index 1 not 0 as index 0 is already sorted
 		size_t j{i};
 		const auto item{arr[i]};
-		for (; j > 0 && item < arr[j-1]; --j) {
+		while (j > 0 && item < arr[j-1]) {
 
 			// swap items
 
 			arr[j] = arr[j-1];
+			
+			--j;
 		}
 
 		arr[j] = item;
@@ -121,7 +123,7 @@ void insertionSort2(T &arr) {
 
 
 int main() {
-	const size_t len{100};
+	const size_t len{10};
 	std::vector<int> arr{generateArray(len)};
 
 	printArr(arr);
